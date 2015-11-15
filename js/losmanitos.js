@@ -2,7 +2,7 @@ var $ = jQuery;
 
 $(function() {
 
-  var $categories = $('.product-categories li a');
+  var $categories = $('.product-categories li');
 
   if (!$categories.length) {
     return ;
@@ -10,9 +10,9 @@ $(function() {
 
   var currentPathToCategory = window.location.pathname.split('/').slice(3).join('/');
 
-  $categories.each(function(index, el) {
-    var $el = $(el),
-      pathToCategory = $(el).attr('href');
+  $categories.each(function(index, li) {
+    var $li = $(li),
+      pathToCategory = $li.find('a').attr('href');
 
     if (!pathToCategory) {
       return ;
@@ -21,9 +21,9 @@ $(function() {
     var pathToCategory = pathToCategory.split('/').slice(5).join('/');
     console.log(pathToCategory, currentPathToCategory);
     if (currentPathToCategory === pathToCategory) {
-      // $el.hide();
+      // $li.hide();
       // o
-      // $el.css('display', 'none');
+      // $li.css('display', 'none');
     }
   });
 
